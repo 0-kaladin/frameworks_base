@@ -681,17 +681,23 @@ public class NetworkController extends BroadcastReceiver {
                     mContentDescriptionDataType = mContext.getString(
                             R.string.accessibility_data_connection_HP);
                     break;
+                case TelephonyManager.NETWORK_TYPE_DCHSPAP:
+                    mDataIconList = TelephonyIcons.DATA_DC[mInetCondition];
+                    mDataTypeIconId = mDataIconList[0];
+                    mContentDescriptionDataType = mContext.getString(
+                            R.string.accessibility_data_connection_DC);
+                    break;
                 case TelephonyManager.NETWORK_TYPE_CDMA:
                     if (!mShowAtLeastThreeGees) {
                         // display 1xRTT for IS95A/B
                         mDataIconList = mUseAltSignal ? TelephonyIcons.DATA_1X_ALT[mInetCondition] :
                         TelephonyIcons.DATA_1X[mInetCondition];
-                    	mDataTypeIconId = mDataIconList[0];
+                        mDataTypeIconId = mDataIconList[0];
                         mQSDataTypeIconId = (isConnected ? R.drawable.ic_qs_signal_full_1x
                                 : R.drawable.ic_qs_signal_1x);
                         mContentDescriptionDataType = mContext.getString(
                             R.string.accessibility_data_connection_cdma);
-						break;
+                    break;
                     } else {
                         // fall through
                     }
@@ -699,7 +705,7 @@ public class NetworkController extends BroadcastReceiver {
                     if (!mShowAtLeastThreeGees) {
                         mDataIconList = mUseAltSignal ? TelephonyIcons.DATA_1X_ALT[mInetCondition] :
                         TelephonyIcons.DATA_1X[mInetCondition];
-                    	mDataTypeIconId = mDataIconList[0];
+                        mDataTypeIconId = mDataIconList[0];
                         mQSDataTypeIconId = (isConnected ? R.drawable.ic_qs_signal_full_1x
                                 : R.drawable.ic_qs_signal_1x);
                         mContentDescriptionDataType = mContext.getString(
